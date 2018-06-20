@@ -1,25 +1,19 @@
 package com.amicabile.queapp.dto;
 
 import com.amicabile.queapp.domain.TaskStatus;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
-import java.util.Date;
-
 
 public class TaskDTO {
 
 
     private Long id;
-    private Date createdAt;
-    private Date updatedAt;
-    private Date dueDate;
-    private Date resolvedAt;
+    private String createdAt;
+    private String updatedAt;
+    private String dueDate;
+    private String resolvedAt;
     private String title;
     private String description;
     private int priority;
-
-    private TaskStatus status;
+    private String status;
 
     public Long getId() {
         return id;
@@ -29,35 +23,35 @@ public class TaskDTO {
         this.id = id;
     }
 
-    public Date getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(String updateddAt) {
         this.updatedAt = updatedAt;
     }
 
-    public Date getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 
-    public Date getResolvedAt() {
+    public String getResolvedAt() {
         return resolvedAt;
     }
 
-    public void setResolvedAt(Date resolvedAt) {
+    public void setResolvedAt(String resolvedAt) {
         this.resolvedAt = resolvedAt;
     }
 
@@ -85,11 +79,11 @@ public class TaskDTO {
         this.priority = priority;
     }
 
-    public TaskStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(TaskStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
