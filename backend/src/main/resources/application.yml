@@ -8,5 +8,11 @@ spring:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
+  endpoints:
+    cors:
+      allow-credentials: true
+      allowed-origins: '*'
+      allowed-methods: '*'
+      allowed-headers: '*'
 server:
   port: 9095

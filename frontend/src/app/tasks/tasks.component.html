@@ -1,7 +1,37 @@
 <h2>My Tasks</h2>
 
-<table>
-    <tr *ngFor="let task of tasks">
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+    <th>
+      TITLE
+    </th>
+    <th>
+      DESCRIPTION
+    </th>
+    <th>
+      CREATED AT
+    </th>
+    <th>
+      UPDATED AT
+    </th>
+    <th>
+      DUE DATE
+    </th>
+    <th>
+      RESOLVED AT
+    </th>
+    <th>
+      PRIORITY
+    </th>
+    <th>
+      STATUS
+    </th>
+  </tr>
+
+  <tr *ngFor="let task of tasks">
       <td>
         {{task.id}}
       </td>
@@ -25,6 +55,9 @@
       </td>
       <td>
         {{task.priority}}
+      </td>
+      <td>
+        {{task.status}}
       </td>
 
     </tr>

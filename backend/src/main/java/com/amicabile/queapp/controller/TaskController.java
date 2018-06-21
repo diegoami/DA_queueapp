@@ -18,10 +18,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping(value = "/tasks", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TaskController {
-    DateFormat format = new SimpleDateFormat("YYYY-MM-DD", Locale.ENGLISH);
+    DateFormat format = new SimpleDateFormat("YYYY-MM-dd", Locale.ENGLISH);
     final TaskRepository taskRepository;
     final ModelMapper modelMapper;
 

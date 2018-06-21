@@ -5,7 +5,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+  })
 };
 
 
@@ -14,7 +16,7 @@ const httpOptions = {
 })
 export class TasksService {
 
-  taskUrl = 'http://localhost:9095';
+  taskUrl = 'http://localhost:9095/tasks/all';
   constructor(private http: HttpClient) { }
 
   getTasks(): Observable<Task[]> {

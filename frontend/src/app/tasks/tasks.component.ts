@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { TasksService } from '../tasks.service';
 import { Task} from '../task';
 
@@ -7,9 +7,10 @@ import { Task} from '../task';
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })
-export class TasksComponent implements OnInit {
+export class TasksComponent implements OnInit, OnDestroy {
 
   tasks: Task[];
+  interval: any;
   constructor(private tasksService: TasksService) { }
 
   getTasks(): void {
@@ -18,6 +19,16 @@ export class TasksComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getTasks();
+    this.interval = setInterval(() => {
+      this.getTasks();
+    }, 5000);
   }
+
+  ngOnDestroy() {
+    clearInterval(this.interval);
+  }
+
+
 
 }
