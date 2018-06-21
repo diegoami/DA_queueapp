@@ -11,11 +11,20 @@ export class TasksComponent implements OnInit, OnDestroy {
 
   tasks: Task[];
   interval: any;
+  selectedTask: Task;
+
   constructor(private tasksService: TasksService) { }
 
   getTasks(): void {
     this.tasksService.getTasks()
       .subscribe(tasks => this.tasks = tasks);
+  }
+
+
+  onSelect(task: Task): void {
+    console.log('Selected');
+    console.log(task);
+    this.selectedTask = task;
   }
 
   ngOnInit() {

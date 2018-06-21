@@ -31,35 +31,36 @@
     </th>
   </tr>
 
-  <tr *ngFor="let task of tasks">
-      <td>
+  <tr [class.selected]="task === selectedTask" *ngFor="let task of tasks">
+      <td (click)="onSelect(task)">
         {{task.id}}
       </td>
-      <td>
+      <td (click)="onSelect(task)">
         {{task.title}}
       </td>
-      <td>
+      <td (click)="onSelect(task)">
         {{task.description}}
       </td>
-      <td>
+      <td (click)="onSelect(task)">
         {{task.createdAt}}
       </td>
-      <td>
+      <td (click)="onSelect(task)">
         {{task.updatedAt}}
       </td>
-      <td>
+      <td (click)="onSelect(task)">
         {{task.dueDate}}
       </td>
-      <td>
+      <td (click)="onSelect(task)">
         {{task.resolvedAt}}
       </td>
-      <td>
+      <td (click)="onSelect(task)">
         {{task.priority}}
       </td>
-      <td>
+      <td (click)="onSelect(task)">
         {{task.status}}
       </td>
 
     </tr>
 
 </table>
+<app-task-detail [task]="selectedTask"></app-task-detail>
