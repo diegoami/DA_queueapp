@@ -64,11 +64,10 @@ public class TaskController {
         return ResponseEntity.ok().body(resultList);
     }
 
-
     private TaskDTO convertToDto(Task task) {
-
         TaskDTO taskDto = new TaskDTO();
         taskDto.setCreatedAt(convertToDate(task.getCreatedAt()));
+        taskDto.setId(task.getId());
         taskDto.setResolvedAt(convertToDate(task.getResolvedAt()));
         taskDto.setUpdatedAt(convertToDate(task.getUpdatedAt()));
         taskDto.setStatus(task.getStatus().name());

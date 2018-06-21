@@ -1,3 +1,32 @@
-<h1>
-  Current Tasks
-</h1>
+<h2>My Tasks</h2>
+
+<table>
+    <tr *ngFor="let task of tasks">
+      <td>
+        {{task.id}}
+      </td>
+      <td>
+        {{task.title}}
+      </td>
+      <td>
+        {{task.description}}
+      </td>
+      <td>
+        {{task.createdAt}}
+      </td>
+      <td>
+        {{task.updatedAt}}
+      </td>
+      <td>
+        {{task.dueDate}}
+      </td>
+      <td>
+        {{task.resolvedAt}}
+      </td>
+      <td>
+        {{task.priority}}
+      </td>
+
+    </tr>
+
+</table>

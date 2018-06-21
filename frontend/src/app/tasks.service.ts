@@ -1,9 +1,23 @@
 import { Injectable } from '@angular/core';
+import { Task } from './task';
+import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
 
-  constructor() { }
+  taskUrl = 'http://localhost:9095';
+  constructor(private http: HttpClient) { }
+
+  getTasks(): Observable<Task[]> {
+      return this.http.get<Task[]>(this.taskUrl);
+  }
 }
