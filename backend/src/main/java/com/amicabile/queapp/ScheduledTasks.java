@@ -25,6 +25,7 @@ public class ScheduledTasks {
     private static final Logger logger = LoggerFactory.getLogger(ScheduledTasks.class);
     private Random rand = new Random();
     final TaskService taskService;
+    private int lenTasks = 0;
 
     public ScheduledTasks(TaskService taskService) {
         this.taskService = taskService;
@@ -32,9 +33,10 @@ public class ScheduledTasks {
 
     @Scheduled(fixedRate = 100)
     public void scheduleTask() {
-        int  n = rand.nextInt(500) + 1;
-        if (n == 1) {
+        int  n = rand.nextInt(100) + 1;
+        if (n == 1 || lenTasks  == 0) {
             taskService.createGenericTask();
+            lenTasks++;
         }
 
 
