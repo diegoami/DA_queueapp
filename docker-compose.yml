@@ -4,18 +4,23 @@ services:
      image: postgres
      volumes:
        - ./tmp/db:/var/lib/postgresql/data
+     network_mode:
+       "host"
    app:
      build:
-       context: .
-       dockerfile: Dockerfile.build
-     environment:
-       VERSION: dev
-     volumes: 
-       - "$HOME/.m2:/root/.m2"
+       context: backend
+       dockerfile: Dockerfile
      ports:
-       - "8080:8080"
-     command: mvn spring-boot:run    
-
-
+       - "9085:9085"
+     network_mode: 
+       "host"        
+   web:
+     build:
+       context: frontend
+       dockerfile: Dockerfile 
+     ports:
+       - "4200:4200"
+     network_mode:
+       "host"
 
 
