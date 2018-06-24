@@ -14,7 +14,6 @@ spring:
       allowed-origins: '*'
       allowed-methods: '*'
       allowed-headers: '*'
-
   logging:
     level:
       root: INFO

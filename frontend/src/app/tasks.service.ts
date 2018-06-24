@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Task } from './task';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {catchError} from "rxjs/internal/operators";
+import { DatePipe } from '@angular/common';
+
 
 
 const httpOptions = {
@@ -19,7 +20,13 @@ export class TasksService {
 
   getTasksUrl = 'http://localhost:9095/tasks/all';
   putTaskUrl = 'http://localhost:9095/tasks/';
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient, private datePipe: DatePipe) { }
+
+  private transformDate(date) {
+    return this.datePipe.transform(date, 'yyyy/MM/dd');
+  }
+
 
   getTasks(): Observable<Task[]> {
       return this.http.get<Task[]>(this.getTasksUrl);
@@ -27,12 +34,23 @@ export class TasksService {
 
   updateTask(task: Task): void {
     console.log('in updateTask');
-    const urlToCall = this.putTaskUrl + task.id;
-    let payload = JSON.stringify(task);
-    console.log(urlToCall);
-    console.log(payload);
-    this.http.put(urlToCall, payload, httpOptions).subscribe();
+    this.http.put(this.putTaskUrl + task.id, JSON.stringify(task), httpOptions).
+      subscribe();
   }
+
+  resolveTask(task: Task): void {
+    task.status = 'DONE';
+    task.resolvedAt = this.transformDate(new Date());
+    this.updateTask(task);
+  }
+
+  postponeTask(task: Task): void {
+    const dueDate = new Date(task.dueDate);
+    dueDate.setDate(dueDate.getDate()+1)
+    task.dueDate = dueDate.getFullYear() + '/' + dueDate.getMonth() + '/' + dueDate.getDay();
+    this.updateTask(task);
+  }
+
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only

@@ -14,9 +14,15 @@ export class TaskDetailComponent implements OnInit {
   }
 
   onUpdate(task: Task): void {
-    console.log('Updating');
-    console.log(task);
     this.tasksService.updateTask(task);
+  }
+
+  onResolve(task: Task): void {
+    this.tasksService.resolveTask(task);
+  }
+
+  onPostpone(task: Task): void {
+    this.tasksService.postponeTask(task);
   }
 
   @Input() task: Task;

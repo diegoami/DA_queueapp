@@ -97,7 +97,7 @@ public class TaskService {
         storedTask.setCreatedAt(retrieveDate(taskDto.getCreatedAt()));
         storedTask.setPriority(taskDto.getPriority());
         storedTask.setStatus(TaskStatus.valueOf(taskDto.getStatus()));
-        storedTask.setUpdatedAt(retrieveDate(taskDto.getUpdatedAt()));
+        storedTask.setUpdatedAt(new Date());
         storedTask.setTitle(taskDto.getTitle());
         storedTask.setDescription(taskDto.getDescription());
         storedTask.setDueDate(retrieveDate(taskDto.getDueDate()));

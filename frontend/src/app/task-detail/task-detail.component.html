@@ -25,13 +25,21 @@
       </label>
     </P>
     <P>
-      <label>dueDate:
+      <label>priority:
         <input [(ngModel)]="task.priority" placeholder="priority"/>
       </label>
     </P>
-    <P><button (click)="onUpdate(task)">
-      Update
-    </button></P>
+    <P>
+      <button (click)="onUpdate(task)">
+        Update
+      </button>
+      <button (click)="onResolve(task)">
+        Resolve
+      </button>
+      <button (click)="onPostpone(task)">
+        Postpone
+      </button>
+    </P>
   </div>
 
 </div>
