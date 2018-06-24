@@ -20,7 +20,6 @@ RUN mvn -T 1C install && rm -rf target
 
 COPY src /usr/src/app/src
 RUN mvn clean compile package
-#COPY target/omini-app-0.0.1.jar omini.jar
-#EXPOSE 9095
+EXPOSE 9095
 
 CMD ["java",  "-jar", "target/omini-app-0.0.1-spring-boot.jar"]

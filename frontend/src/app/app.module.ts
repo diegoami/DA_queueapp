@@ -6,6 +6,8 @@ import { TasksComponent } from './tasks/tasks.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { FormsModule } from '@angular/forms';
+import {DatePipe} from "@angular/common";
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

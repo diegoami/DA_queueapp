@@ -6,6 +6,7 @@ import { DatePipe } from '@angular/common';
 
 
 
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
@@ -21,7 +22,9 @@ export class TasksService {
   getTasksUrl = 'http://localhost:9095/tasks/all';
   putTaskUrl = 'http://localhost:9095/tasks/';
 
-  constructor(private http: HttpClient, private datePipe: DatePipe) { }
+  constructor(private http: HttpClient
+              , private datePipe: DatePipe
+  ) { }
 
   private transformDate(date) {
     return this.datePipe.transform(date, 'yyyy/MM/dd');
@@ -46,7 +49,7 @@ export class TasksService {
 
   postponeTask(task: Task): void {
     const dueDate = new Date(task.dueDate);
-    dueDate.setDate(dueDate.getDate()+1)
+    dueDate.setDate(dueDate.getDate() +1 )
     task.dueDate = dueDate.getFullYear() + '/' + dueDate.getMonth() + '/' + dueDate.getDay();
     this.updateTask(task);
   }

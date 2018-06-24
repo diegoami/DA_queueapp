@@ -1,9 +1,6 @@
 package com.amicabile.queapp.dto;
 
-import com.amicabile.queapp.domain.TaskStatus;
-
 public class TaskDTO {
-
 
     private Long id;
     private String createdAt;
@@ -35,7 +32,7 @@ public class TaskDTO {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updateddAt) {
+    public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
 
