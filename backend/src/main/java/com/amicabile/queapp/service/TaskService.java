@@ -65,7 +65,7 @@ public class TaskService {
                 resultList.add(convertToDto(task));
         });
 
-        Collections.sort(resultList, Comparator.comparing(TaskDTO::getDueDate).thenComparing(Comparator.comparing(TaskDTO::getPriority)));
+        Collections.sort(resultList, Comparator.comparing(TaskDTO::getDueDate).thenComparing(Comparator.comparing(TaskDTO::getPriority)).reversed());
 
         return resultList;
     }

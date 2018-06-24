@@ -19,24 +19,24 @@ const httpOptions = {
 })
 export class TasksService {
 
-  getTasksUrl = 'http://localhost:9095/tasks/all';
+  getTasksUrl = 'http://localhost:9095/tasks/all?size=15';
   putTaskUrl = 'http://localhost:9095/tasks/';
 
-  constructor(private http: HttpClient
-              , private datePipe: DatePipe
-  ) { }
+  constructor(private http: HttpClient, private datePipe: DatePipe) { }
 
   private transformDate(date) {
     return this.datePipe.transform(date, 'yyyy/MM/dd');
   }
 
+  private padNumber(number) {
+    return ('0' + number).slice(-2);
+  }
 
   getTasks(): Observable<Task[]> {
       return this.http.get<Task[]>(this.getTasksUrl);
   }
 
   updateTask(task: Task): void {
-    console.log('in updateTask');
     this.http.put(this.putTaskUrl + task.id, JSON.stringify(task), httpOptions).
       subscribe();
   }
@@ -49,8 +49,8 @@ export class TasksService {
 
   postponeTask(task: Task): void {
     const dueDate = new Date(task.dueDate);
-    dueDate.setDate(dueDate.getDate() +1 )
-    task.dueDate = dueDate.getFullYear() + '/' + dueDate.getMonth() + '/' + dueDate.getDay();
+    dueDate.setDate(dueDate.getDate() + 1 )
+    task.dueDate = dueDate.getFullYear() + '/' + this.padNumber(dueDate.getMonth() + 1) + '/' + this.padNumber(dueDate.getDate());
     this.updateTask(task);
   }
 

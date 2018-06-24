@@ -1,3 +1,7 @@
+# BUILD APP
+
+
+
 # BUILD
 
 docker build -t queapp-frontend --file Dockerfile . 

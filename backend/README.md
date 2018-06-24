@@ -1,4 +1,8 @@
-# BUILD
+# BUILD JAR
+
+mvn clean compile package
+
+# BUILD DOCKER
 
 docker build -t queapp-backend --file Dockerfile . 
 
