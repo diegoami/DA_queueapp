@@ -1,19 +1,27 @@
 version: '3'
 services:
   postgres:
-    image: diegoami/omini_postgres:latest 
+    build:
+      context: db
+      dockerfile: Dockerfile
     ports:
       - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
     network_mode:
       - "host"
   app:
-    image: diegoami/omini_app:latest
+    build:
+      context: backend
+      dockerfile: Dockerfile
     ports:
       - "9095:9095"
     network_mode: 
       - "host"        
   web:
-    image: diegoami/omini_web:latest
+    build:
+      context: frontend
+      dockerfile: Dockerfile 
     ports:
       - "4200:4200"
     network_mode:
