@@ -11,7 +11,7 @@ services:
        context: backend
        dockerfile: Dockerfile
      ports:
-       - "9085:9085"
+       - "9095:9095"
      network_mode: 
        "host"        
    web:

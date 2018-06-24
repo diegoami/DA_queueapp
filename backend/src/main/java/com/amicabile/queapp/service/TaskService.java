@@ -6,10 +6,11 @@ import com.amicabile.queapp.dto.TaskDTO;
 import com.amicabile.queapp.repository.TaskRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+
+import org.springframework.data.domain.Sort;
+
 
 import javax.persistence.EntityNotFoundException;
 import java.text.DateFormat;
@@ -17,10 +18,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
+
 
 @Service
 public class TaskService {
@@ -29,7 +28,7 @@ public class TaskService {
     private static final String DATE_FORMAT = "yyyy/MM/dd";
     private static final DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
     private static final DateTimeFormatter dateFormat8 = DateTimeFormatter.ofPattern(DATE_FORMAT);
-
+    private Random rand = new Random();
     final TaskRepository taskRepository;
 
     public TaskService (TaskRepository taskRepository ) {
@@ -39,16 +38,18 @@ public class TaskService {
     public void createGenericTask() {
         Date createdAt = new Date();
         LocalDateTime createdAtDateTime = createdAt.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-
-        LocalDateTime dueDateTime = createdAtDateTime.plusDays(5);
+        int days = rand.nextInt(7) + 1;
+        LocalDateTime dueDateTime = createdAtDateTime.plusDays(days);
         Date dueDate = Date.from(dueDateTime.atZone(ZoneId.systemDefault()).toInstant());
 
         Task task = new Task();
+        int taskNumber = rand.nextInt(1000000) + 1;
         task.setCreatedAt(createdAt);
         task.setUpdatedAt(createdAt);
-        task.setPriority(1);
-        task.setTitle("TASK " + dateFormat8.format(createdAtDateTime));
-        task.setDescription("DESCRIPTION " + dateFormat8.format(createdAtDateTime));
+        int priority = rand.nextInt(10) + 1;
+        task.setPriority(priority);
+        task.setTitle("TASK #" + taskNumber );
+        task.setDescription("DESCRIPTION FOR TASK #" + taskNumber );
 
         task.setStatus(TaskStatus.PENDING);
         task.setDueDate(dueDate);
@@ -59,7 +60,13 @@ public class TaskService {
     public List<TaskDTO> retrieveAllTasks() {
         final List<TaskDTO> resultList = new ArrayList<>();
         final Iterable<Task> all = taskRepository.findAll();
-        all.forEach(task -> resultList.add(convertToDto(task)));
+        all.forEach(task -> {
+            if (task.getStatus().equals(TaskStatus.PENDING))
+                resultList.add(convertToDto(task));
+        });
+
+        Collections.sort(resultList, Comparator.comparing(TaskDTO::getDueDate).thenComparing(Comparator.comparing(TaskDTO::getPriority)));
+
         return resultList;
     }
 
@@ -76,7 +83,6 @@ public class TaskService {
         taskDto.setPriority(task.getPriority());
         return taskDto;
     }
-
 
     private Date retrieveDate(String dateString) {
         try {
@@ -112,5 +118,9 @@ public class TaskService {
         } else {
             return null;
         }
+    }
+
+    private Sort sortByDatePriority() {
+        return new Sort(Sort.Direction.ASC, "dueDate", "priority");
     }
 }

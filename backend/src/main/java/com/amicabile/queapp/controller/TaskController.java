@@ -12,14 +12,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityNotFoundException;
-import java.text.DateFormat;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -42,9 +38,13 @@ public class TaskController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<TaskDTO>> findAll() {
+
+    public ResponseEntity<List<TaskDTO>> findAll(@RequestParam(required = false) Integer size) {
         logger.info("Calling findAll");
-        final List<TaskDTO> resultList = taskService.retrieveAllTasks();
+        List<TaskDTO> resultList = taskService.retrieveAllTasks();
+        if (size != null) {
+            resultList = resultList.subList(0, Math.min(resultList.size(), size));
+        }
         return ResponseEntity.ok().body(resultList);
     }
 
