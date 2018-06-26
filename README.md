@@ -1,7 +1,7 @@
-# BUILD
-
-docker-compose build
-
 # RUN
 
 docker-compose up
+
+# BUILD IMAGES
+
+Use docker-compose-build.yml
