@@ -1,0 +1,8 @@
+/home/diegoami/projects/DA_queueapp/backend/src/main/java/com/amicabile/queapp/controller/TaskController.java
+/home/diegoami/projects/DA_queueapp/backend/src/main/java/com/amicabile/queapp/service/TaskService.java
+/home/diegoami/projects/DA_queueapp/backend/src/main/java/com/amicabile/queapp/domain/Task.java
+/home/diegoami/projects/DA_queueapp/backend/src/main/java/com/amicabile/queapp/repository/TaskRepository.java
+/home/diegoami/projects/DA_queueapp/backend/src/main/java/com/amicabile/queapp/domain/TaskStatus.java
+/home/diegoami/projects/DA_queueapp/backend/src/main/java/com/amicabile/queapp/Application.java
+/home/diegoami/projects/DA_queueapp/backend/src/main/java/com/amicabile/queapp/ScheduledTasks.java
+/home/diegoami/projects/DA_queueapp/backend/src/main/java/com/amicabile/queapp/dto/TaskDTO.java
