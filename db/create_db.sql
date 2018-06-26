@@ -1,4 +1,4 @@
-
+create sequence hibernate_sequence;
 
 create table task
 (
