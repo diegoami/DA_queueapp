@@ -1,6 +1,6 @@
 com/amicabile/queapp/repository/TaskRepository.class
-com/amicabile/queapp/domain/Task.class
 com/amicabile/queapp/domain/TaskStatus.class
+com/amicabile/queapp/domain/Task.class
 com/amicabile/queapp/controller/TaskController.class
 com/amicabile/queapp/Application.class
 com/amicabile/queapp/service/TaskService.class
