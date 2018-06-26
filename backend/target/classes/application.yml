@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/queapp
+    username: queapp
+    password: queapp
+    platform: POSTGRESQL
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  endpoints:
+    cors:
+      allow-credentials: true
+      allowed-origins: '*'
+      allowed-methods: '*'
+      allowed-headers: '*'
+  logging:
+    level:
+      root: INFO
+server:
+  port: 9095
