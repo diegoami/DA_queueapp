@@ -8,7 +8,10 @@ or docker processes running
 
     docker ps
 
-It may be necessary to remove postgres-data
+
+
+
+It may be necessary to remove the directory postgres-data
 
     sudo rm -rf ./postgres-data
     
@@ -21,13 +24,18 @@ It may be necessary to remove postgres-data
 
     docker-compose up
 
+
+
 or if the database starts too soon
 
     docker-compose run -d postgres
     docker-compose run -d app
     docker-compose run -d web
 
+after that
+  
 
+    docker-compose down
 
 
 # CONNECT
