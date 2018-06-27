@@ -20,6 +20,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "9095:9095"
+    depends_on:
+     - "postgres"
     network_mode: 
       "host"        
   web:
@@ -28,6 +30,8 @@ services:
       dockerfile: Dockerfile 
     ports:
       - "4200:4200"
+    depends_on:
+      - "app"    
     network_mode:
       "host"
 
