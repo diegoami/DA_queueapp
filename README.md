@@ -22,6 +22,7 @@ It may be necessary to remove the directory postgres-data
 
 # RUN
 
+docker-compose up may not work because app does not wait for postgres (should add a waiting script). Therefore start the services one after the other.
 
     docker-compose run -d postgres
     docker-compose run -d app
