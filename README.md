@@ -22,11 +22,6 @@ It may be necessary to remove the directory postgres-data
 
 # RUN
 
-    docker-compose up
-
-
-
-or if the database starts too soon
 
     docker-compose run -d postgres
     docker-compose run -d app
