@@ -3,9 +3,7 @@ import { Task } from './task';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
-
-
-
+import { environment } from '../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json',
@@ -19,8 +17,8 @@ const httpOptions = {
 })
 export class TasksService {
 
-  getTasksUrl = 'http://localhost:9095/tasks/all?size=15';
-  putTaskUrl = 'http://localhost:9095/tasks/';
+  getTasksUrl = environment.getTasksUrl;
+  putTaskUrl = environment.putTasksUrl;
 
   constructor(private http: HttpClient, private datePipe: DatePipe) { }
 
@@ -49,7 +47,7 @@ export class TasksService {
 
   postponeTask(task: Task): void {
     const dueDate = new Date(task.dueDate);
-    dueDate.setDate(dueDate.getDate() + 1 )
+    dueDate.setDate(dueDate.getDate() + 1 );
     task.dueDate = dueDate.getFullYear() + '/' + this.padNumber(dueDate.getMonth() + 1) + '/' + this.padNumber(dueDate.getDate());
     this.updateTask(task);
   }
