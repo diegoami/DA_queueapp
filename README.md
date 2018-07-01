@@ -1,3 +1,17 @@
+# INTRODUCTION
+
+Three methods to set up the project:
+
+- Retrieve the image from dockerhub
+- Build a docker image locally
+- Set up the required software on your OS
+
+# CONNECT
+
+The web application in all cases is accessible at 
+
+http://localhost:4200
+
 # RUN IMAGE
 
 ## START    
@@ -11,17 +25,7 @@
 ## REMOVE
   
     docker rm queapp-container
-
-# LOCAL
-
-Assuming you installed java8, nodejs, postgres
-
-    ./start_local.sh
-
-To stop the backend
-
-    kill -9 $(ps -aef | grep omini-app-0.0.1-spring-boot.jar | awk '{ print $2 }')
-
+    
 # DOCKER
 
 
@@ -60,9 +64,17 @@ Remove directories having wrong privileges
 
     docker rm queapp-all-container
 
-# CONNECT
 
-http://localhost:4200
+# LOCAL
+
+Assuming you installed java8, nodejs, postgres -- Execute
+
+    ./start_local.sh
+
+To stop the backend
+
+    kill -9 $(ps -aef | grep omini-app-0.0.1-spring-boot.jar | awk '{ print $2 }')
+
 
 
 
