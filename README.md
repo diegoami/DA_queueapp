@@ -67,9 +67,17 @@ Remove directories having wrong privileges
 
 # LOCAL
 
+## INSTALL
+
+Use Dockerfile as a reference to check what software to install
+
+## START
+
 Assuming you installed java8, nodejs, postgres -- Execute
 
     ./start_local.sh
+
+## STOP
 
 To stop the backend
 
