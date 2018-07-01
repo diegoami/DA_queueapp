@@ -1,9 +1,10 @@
-pushd
-prepare_backend.sh
+#!/bin/bash
+pushd scripts
+./prepare_backend.sh
 popd
 
 pushd backend
-java --add-modules java.xml.bind -jar target/omini-app-0.0.1-spring-boot.jar &
+java -jar target/omini-app-0.0.1-spring-boot.jar &
 popd
 
 pushd frontend

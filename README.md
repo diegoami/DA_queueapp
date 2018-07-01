@@ -1,6 +1,16 @@
 # RUN IMAGE
 
+## START    
+
     docker run -p 4200:4200 -p 9095:9095 --name queapp-container diegoami/queapp:latest
+
+## STOP
+   
+    docker stop queapp-container
+
+## REMOVE
+  
+    docker rm queapp-container
 
 # LOCAL
 
