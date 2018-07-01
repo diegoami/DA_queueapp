@@ -1,3 +1,23 @@
+# LOCAL
+
+Assuming you installed java8, nodejs, postgres
+
+    scripts/prepare_backend.sh
+
+    pushd backend
+    java --add-modules java.xml.bind -jar target/omini-app-0.0.1-spring-boot.jar &
+    popd
+
+    pushd frontend
+    npm install
+    npm start
+    popd 
+    
+
+
+# DOCKER
+
+
 # CLEAN UP
 
 Make sure that there are no stale images
@@ -8,31 +28,13 @@ or docker processes running
 
     docker ps
 
-
-
-
-It may be necessary to remove the directory postgres-data
-
-    sudo rm -rf ./postgres-data
-    
-
 # BUILD
 
-    docker-compose build
+    docker build -t queapp-all --file Dockerfile .
 
 # RUN
 
-docker-compose up may not work because app does not wait for postgres (should add a waiting script). Therefore start the services one after the other.
-
-    docker-compose run -d postgres
-    docker-compose run -d app
-    docker-compose run -d web
-
-after that
-  
-
-    docker-compose down
-
+    docker run -p 4200:4200 queapp-all:latest 
 
 # CONNECT
 
