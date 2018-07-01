@@ -8,4 +8,4 @@ docker build -t queapp-backend --file Dockerfile .
 
 # RUN
 
-docker run --rm -p 9095:9095 --net host queapp-backend:latest
+docker run --rm -p 9095:9095 host queapp-backend:latest
