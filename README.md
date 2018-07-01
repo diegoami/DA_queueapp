@@ -1,6 +1,6 @@
 # RUN IMAGE
 
-    docker run -p 4200:4200 -p 9095:9095 --name queapp-container diegoami/queapp-all:latest
+    docker run -p 4200:4200 -p 9095:9095 --name queapp-container diegoami/queapp:latest
 
 # LOCAL
 
@@ -37,11 +37,15 @@ or the ports are not taken
 
 ## RUN
 
-    docker run -p 4200:4200 -p 9095:9095 --name queapp-container queapp-all:latest
+    docker run -p 4200:4200 -p 9095:9095 --name queapp-all-container queapp-all:latest
 
 ## STOP
 
-    docker stop container
+    docker stop queapp-all-container
+
+## REMOVE
+
+    docker rm queapp-all-container
 
 # CONNECT
 
