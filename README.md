@@ -41,8 +41,8 @@ or docker processes running
 
 or the ports are not taken
 
-    nestat -tulp | grep 4200
-    nestat -tulp | grep 9095
+    netstat -tulp | grep 4200
+    netstat -tulp | grep 9095
 
 Remove directories having wrong privileges
 
