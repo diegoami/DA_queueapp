@@ -1,24 +1,21 @@
+# RUN IMAGE
+
+    docker run -p 4200:4200 -p 9095:9095 --name queapp-container diegoami/queapp-all:latest
+
 # LOCAL
 
 Assuming you installed java8, nodejs, postgres
 
-    scripts/prepare_backend.sh
+    ./start_local.sh
 
-    pushd backend
-    java --add-modules java.xml.bind -jar target/omini-app-0.0.1-spring-boot.jar &
-    popd
+To stop the backend
 
-    pushd frontend
-    npm install
-    npm start
-    popd 
-    
-
+    kill -9 $(ps -aef | grep omini-app-0.0.1-spring-boot.jar | awk '{ print $2 }')
 
 # DOCKER
 
 
-# CLEAN UP
+## CLEAN UP
 
 Make sure that there are no stale images
 
@@ -28,16 +25,27 @@ or docker processes running
 
     docker ps
 
-# BUILD
+or the ports are not taken
+
+   nestat -tulp | grep 4200
+   nestat -tulp | grep 9095
+
+
+## BUILD
 
     docker build -t queapp-all --file Dockerfile .
 
-# RUN
+## RUN
 
-    docker run -p 4200:4200 queapp-all:latest 
+    docker run -p 4200:4200 -p 9095:9095 --name queapp-container queapp-all:latest
+
+## STOP
+
+    docker stop container
 
 # CONNECT
 
 http://localhost:4200
+
 
 

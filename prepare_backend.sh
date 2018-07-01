@@ -1,3 +1,4 @@
+#!/bin/bash
 service postgresql start
 sleep 1
 sudo -u postgres psql -f create_queapp.sql 
