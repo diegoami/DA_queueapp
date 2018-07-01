@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  hostname: localhost ,
   getTasksUrl : 'http://localhost:9095/tasks/all?size=15',
   putTasksUrl : 'http://localhost:9095/tasks/'
 };
