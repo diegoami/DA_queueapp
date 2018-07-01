@@ -6,17 +6,23 @@ services:
       dockerfile: Dockerfile
     ports:
       - "9095:9095"
-    network_mode: 
-      "host"        
+    network_mode:
+      "quenet"
+    container_name:
+      "queapp"
   web:
     build:
       context: frontend
-      dockerfile: Dockerfile 
+      dockerfile: Dockerfile
     ports:
       - "4200:4200"
     depends_on:
-      - "app"    
+      - "app"
     network_mode:
-      "host"
+      "quenet"
+    environment:
+      - APP_HOST=queapp
+    container_name:
+      "queweb"
 
 
