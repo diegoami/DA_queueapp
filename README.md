@@ -40,6 +40,9 @@ or the ports are not taken
    nestat -tulp | grep 4200
    nestat -tulp | grep 9095
 
+Remove directories having wrong privileges
+
+   sudo rm -rf postgres-data
 
 ## BUILD
 
